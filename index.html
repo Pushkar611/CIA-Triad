@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CIA Triad Security Assessment</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main>
+
+        <h1>CIA Triad </h1>
+
+        <p class="muted">
+            Demonstration of Confidentiality, Integrity and Availability
+            vulnerabilities and their security controls.
+        </p>
+
+        <!-- Application Mode -->
+
+        <div class="card">
+
+            <div class="bar">
+                <div>
+                    <h2>Application Mode</h2>
+                    <p class="muted">
+                        Compare vulnerable and secured application versions.
+                    </p>
+                </div>
+
+                <div class="seg" id="modeSeg">
+                    <button class="on v" data-m="vuln">Vulnerable</button>
+                    <button data-m="secure">Secured</button>
+                </div>
+            </div>
+
+            <div class="grid" id="score"></div>
+
+        </div>
+
+        <!-- Navigation -->
+
+        <div class="tabs" id="tabs">
+
+            <button class="on" data-t="c">Confidentiality</button>
+            <button data-t="i">Integrity</button>
+            <button data-t="a">Availability</button>
+            <button data-t="r">Security Controls</button>
+
+        </div>
+
+        <!-- Confidentiality -->
+        <section class="card" id="t-c">
+
+            <h2>Confidentiality</h2>
+
+            <!-- <h3>Broken Access Control (IDOR)</h3> -->
+
+            <p class="muted">
+                Enter a user's name and password to access their profile.
+                Compare vulnerable and secured authentication.
+            </p>
+
+            <label for="userName">Name</label>
+            <input type="text" id="userName" placeholder="Enter user name">
+
+            <label for="userPassword">Password</label>
+            <input type="password" id="userPassword" placeholder="Enter password">
+
+            <button class="btn" id="cBtn" type="button">
+                Login
+            </button>
+
+            <pre id="cOut">Waiting for login...</pre>
+
+            <div id="cRes"></div>
+
+            <p class="muted">
+                Security Control: Password verification and server-side
+                authentication and authorisation.
+            </p>
+
+        </section>
+
+        <!-- Integrity -->
+
+        <section class="card hide" id="t-i">
+
+            <h2>Integrity</h2>
+
+            <h3>1. SQL Injection</h3>
+
+            <p class="muted">
+                Valid credentials: rahul@gmail.com / rahul123
+            </p>
+
+            <label for="em">Email</label>
+            <input id="em" type="email" value="rahul@gmail.com">
+
+            <label for="pw">Password</label>
+            <input id="pw" type="password" value="rahul123">
+
+            <button class="btn" id="iBtn">Login</button>
+            <button class="btn alt" id="iAtk">Try SQL Injection</button>
+
+            <pre id="iSql"></pre>
+
+            <div id="iRes"></div>
+
+            <p class="muted">
+                Security Control: Parameterised SQL queries and input validation.
+            </p>
+
+            <hr>
+
+            <h3>2. Cross-Site Scripting (XSS)</h3>
+
+            <p class="muted">
+                Submit a review and observe how the application handles HTML input.
+            </p>
+
+            <textarea id="rv" rows="2">Great product!</textarea>
+
+            <button class="btn" id="xBtn">Post Review</button>
+            <button class="btn alt" id="xAtk">Try XSS Payload</button>
+
+            <div class="res neu" id="xOut">No reviews yet.</div>
+
+            <div id="xRes"></div>
+
+            <p class="muted">
+                Security Control: Output encoding and Content Security Policy.
+            </p>
+
+        </section>
+
+        <!-- Availability -->
+
+        <section class="card hide" id="t-a">
+
+            <h2>Availability</h2>
+
+            <h3>Rate Limiting</h3>
+
+            <p class="muted">
+                Simulate 30 rapid requests and observe the effect of rate limiting.
+            </p>
+
+            <button class="btn" id="aBtn">Launch 30 Requests</button>
+            <button class="btn alt" id="aRst">Reset</button>
+
+            <p class="muted">Simulated Server Load</p>
+            <p class="muted" id="loadText">Load: 0%</p>
+
+            <div class="meter" id="meter">
+                <i id="load"></i>
+            </div>
+
+            <pre id="aLog">Idle.</pre>
+
+            <div id="aRes"></div>
+
+            <p class="muted">
+                Security Control: Rate limiting, account lockout and monitoring.
+            </p>
+
+        </section>
+
+        <!-- Security Controls -->
+
+        <section class="card hide" id="t-r">
+
+            <h2>Security Controls and Recommendations</h2>
+
+            <div class="wrap">
+
+                <table>
+
+                    <tr>
+                        <th>CIA Principle</th>
+                        <th>Vulnerability</th>
+                        <th>Recommended Security Control</th>
+                    </tr>
+
+                    <tr>
+                        <td>Confidentiality</td>
+                        <td>Broken Access Control (IDOR)</td>
+                        <td>Server-side authorisation and ownership verification</td>
+                    </tr>
+
+                    <tr>
+                        <td>Confidentiality</td>
+                        <td>Weak Passwords</td>
+                        <td>Strong passwords, MFA and password hashing</td>
+                    </tr>
+
+                    <tr>
+                        <td>Integrity</td>
+                        <td>SQL Injection</td>
+                        <td>Parameterised queries and input validation</td>
+                    </tr>
+
+                    <tr>
+                        <td>Integrity</td>
+                        <td>Cross-Site Scripting (XSS)</td>
+                        <td>Output encoding and Content Security Policy</td>
+                    </tr>
+
+                    <tr>
+                        <td>Availability</td>
+                        <td>Excessive Requests</td>
+                        <td>Rate limiting and account lockout</td>
+                    </tr>
+
+                    <tr>
+                        <td>Availability</td>
+                        <td>Server Failure</td>
+                        <td>Backups, redundancy and load balancing</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <p class="muted">
+                References: OWASP Top 10, NIST SP 800-53 and ISO/IEC 27001.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

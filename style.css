@@ -1,0 +1,607 @@
+/* /* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+    --bg: #f6f4ee;
+    --fg: #14202e;
+    --card: #ffffff;
+    --muted: #5b6673;
+    --bd: #ddd8cb;
+    --acc: #0b7a75;
+
+    --bad: #c0392b;
+    --badbg: #fdecea;
+
+    --good: #1e8449;
+    --goodbg: #e6f4ea;
+
+    --warn: #b9770e;
+    --warnbg: #fff3d6;
+
+    --code: #101a27;
+    --codefg: #d6e2f0;
+
+    box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0e1621;
+        --fg: #e8edf3;
+        --card: #17212e;
+        --muted: #9aa8b8;
+        --bd: #2a3748;
+        --acc: #3ecfc6;
+
+        --bad: #ff7b6b;
+        --badbg: #3a1d1f;
+
+        --good: #5fd38d;
+        --goodbg: #173325;
+
+        --warn: #f5c56a;
+        --warnbg: #3a2d17;
+
+        --code: #070c13;
+        --codefg: #d6e2f0;
+    }
+}
+
+:root[data-theme="dark"] {
+    --bg: #0e1621;
+    --fg: #e8edf3;
+    --card: #17212e;
+    --muted: #9aa8b8;
+    --bd: #2a3748;
+    --acc: #3ecfc6;
+
+    --bad: #ff7b6b;
+    --badbg: #3a1d1f;
+
+    --good: #5fd38d;
+    --goodbg: #173325;
+
+    --warn: #f5c56a;
+    --warnbg: #3a2d17;
+
+    --code: #070c13;
+    --codefg: #d6e2f0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+
+    font:
+        16px/1.6 system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        sans-serif;
+}
+
+main {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 25px 16px 50px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0 0 5px;
+}
+
+h2 {
+    font-size: 21px;
+    margin: 0 0 12px;
+}
+
+h3 {
+    font-size: 17px;
+    margin: 18px 0 8px;
+}
+
+p {
+    margin: 7px 0;
+}
+
+ul {
+    padding-left: 22px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.page-header {
+    margin-bottom: 20px;
+}
+
+.team {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--bd);
+    border-radius: 14px;
+
+    padding: 20px;
+    margin-top: 16px;
+}
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.info-box {
+    border: 1px solid var(--bd);
+    border-radius: 11px;
+    padding: 14px;
+    background: var(--bg);
+}
+
+.info-box h3 {
+    margin-top: 0;
+}
+
+.info-box p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* =========================
+   NOTICES
+========================= */
+
+.notice {
+    background: var(--warnbg);
+    color: var(--fg);
+
+    border-left: 4px solid var(--warn);
+
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+.explanation {
+    background: var(--bg);
+    border: 1px solid var(--bd);
+
+    border-radius: 8px;
+    padding: 12px;
+
+    margin-top: 16px;
+    font-size: 14px;
+}
+
+/* =========================
+   MODE SELECTOR
+========================= */
+
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.seg {
+    display: inline-flex;
+
+    border: 1px solid var(--bd);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.seg button {
+    border: 0;
+    background: transparent;
+    color: var(--fg);
+
+    padding: 10px 18px;
+    font: inherit;
+    cursor: pointer;
+}
+
+.seg button.on.v {
+    background: var(--bad);
+    color: white;
+}
+
+.seg button.on.s {
+    background: var(--good);
+    color: white;
+}
+
+/* =========================
+   NAVIGATION TABS
+========================= */
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 16px;
+}
+
+.tabs button {
+    flex: 1;
+    min-width: 125px;
+
+    padding: 12px;
+
+    border: 1px solid var(--bd);
+    border-radius: 10px;
+
+    background: var(--card);
+    color: var(--fg);
+
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tabs button.on {
+    border-color: var(--acc);
+    box-shadow: 0 0 0 2px var(--acc) inset;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea {
+    display: block;
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid var(--bd);
+    border-radius: 8px;
+
+    background: var(--bg);
+    color: var(--fg);
+
+    font: inherit;
+    margin: 6px 0 12px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    padding: 10px 17px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: var(--acc);
+    color: #ffffff;
+
+    font: inherit;
+    font-weight: 600;
+
+    cursor: pointer;
+    margin: 4px 6px 4px 0;
+
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn.alt {
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--bd);
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--acc);
+    outline-offset: 3px;
+}
+
+/* =========================
+   TEST AREAS
+========================= */
+
+.test-area {
+    margin-top: 12px;
+}
+
+/* =========================
+   CODE OUTPUT
+========================= */
+
+pre {
+    background: var(--code);
+    color: var(--codefg);
+
+    padding: 14px;
+    border-radius: 9px;
+
+    overflow-x: auto;
+
+    font:
+        13px/1.6 ui-monospace,
+        Menlo,
+        Consolas,
+        monospace;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    margin: 10px 0;
+}
+
+/* =========================
+   RESULT MESSAGES
+========================= */
+
+.res {
+    border-radius: 8px;
+    padding: 11px 13px;
+
+    margin-top: 9px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.res.bad {
+    background: var(--badbg);
+    color: var(--bad);
+}
+
+.res.good {
+    background: var(--goodbg);
+    color: var(--good);
+}
+
+.res.neu {
+    background: var(--bg);
+    border: 1px solid var(--bd);
+}
+
+/* =========================
+   SCORECARD
+========================= */
+
+.score {
+    border: 1px solid var(--bd);
+    border-radius: 11px;
+
+    padding: 14px;
+    background: var(--card);
+}
+
+.badge {
+    display: inline-block;
+
+    padding: 3px 10px;
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.badge.bad {
+    background: var(--badbg);
+    color: var(--bad);
+}
+
+.badge.good {
+    background: var(--goodbg);
+    color: var(--good);
+}
+
+/* =========================
+   SEVERITY
+========================= */
+
+.severity {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.severity.critical {
+    background: var(--badbg);
+    color: var(--bad);
+}
+
+.severity.high {
+    background: var(--warnbg);
+    color: var(--warn);
+}
+
+.severity.medium {
+    background: var(--bg);
+    color: var(--muted);
+    border: 1px solid var(--bd);
+}
+
+/* =========================
+   AVAILABILITY METER
+========================= */
+
+.meter {
+    height: 17px;
+
+    background: var(--bd);
+    border-radius: 10px;
+
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.meter i {
+    display: block;
+
+    height: 100%;
+    width: 0%;
+
+    background: var(--good);
+
+    transition:
+        width 0.15s ease,
+        background 0.15s ease;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    font-size: 13px;
+    min-width: 850px;
+}
+
+th,
+td {
+    text-align: left;
+    vertical-align: top;
+
+    padding: 11px 10px;
+
+    border-bottom: 1px solid var(--bd);
+}
+
+th {
+    color: var(--muted);
+    background: var(--bg);
+}
+
+tbody tr:hover {
+    background: var(--bg);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    padding: 15px;
+    border-top: 1px solid var(--bd);
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hide {
+    display: none !important;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--bd);
+    margin: 25px 0;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 600px) {
+
+    main {
+        padding: 18px 12px 35px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .tabs button {
+        min-width: 45%;
+    }
+
+    .seg button {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .btn {
+        margin: 5px 3px 5px 0;
+    }
+} 
+
+
+
